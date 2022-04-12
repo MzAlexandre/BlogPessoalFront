@@ -13,6 +13,7 @@ export class TemaComponent implements OnInit {
 
   tema: Tema = new Tema()
   listaTemas: Tema[]
+  
 
   constructor(
     private router: Router,
@@ -23,6 +24,11 @@ export class TemaComponent implements OnInit {
 
     if(environment.token == '') {
       this.router.navigate(['/entrar'])
+    }
+
+    if(environment.tipo != 'adm'){
+      alert('Você precisa ser adm para acessar essa rota')
+      this.router.navigate(['/inicio'])
     }
 
     this.findAllTemas()
